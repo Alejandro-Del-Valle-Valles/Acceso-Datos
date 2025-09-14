@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="ESHelper">
+      <HintPath>..\ESHelper\bin\Debug\net8.0\ESHelper.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
