@@ -6,7 +6,7 @@ namespace T01_Ejercicios_Manejo_Ficheros
     {
         static void Main(string[] args)
         {
-            
+            Ejercicio08App.Start();   
         }
     }
 }
