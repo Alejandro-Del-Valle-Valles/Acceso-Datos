@@ -74,6 +74,20 @@ namespace T01_Ejercicios_Manejo_Ficheros.Modelo
             return HashCode.Combine(NIA);
         }
 
+        /// <summary>
+        /// Compares the current instance with another <see cref="Alumno"/> object and returns an integer  that
+        /// indicates the relative order of the objects.
+        /// </summary>
+        /// <remarks>The comparison is based on the <see cref="Alumno.NIA"/> property, with the current
+        /// instance  being compared to the <paramref name="other"/> instance.</remarks>
+        /// <param name="other">The <see cref="Alumno"/> object to compare with the current instance.  This parameter can be <see
+        /// langword="null"/>.</param>
+        /// <returns>A value that indicates the relative order of the objects being compared: <list type="bullet">
+        /// <item><description>1 if <paramref name="other"/> is <see langword="null"/>.</description></item>
+        /// <item><description>A negative value if the current instance precedes <paramref name="other"/> in the sort
+        /// order.</description></item> <item><description>Zero if the current instance occurs in the same position as
+        /// <paramref name="other"/> in the sort order.</description></item> <item><description>A positive value if the
+        /// current instance follows <paramref name="other"/> in the sort order.</description></item> </list></returns>
         public int CompareTo(Alumno? other)
         {
             return other == null

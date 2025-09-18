@@ -6,11 +6,11 @@ namespace T01_Ejercicios_Manejo_Ficheros.Servicios
     internal static class AlumnosService
     {
         /// <summary>
-        /// Save (And create if not exists) into "alumnos_edades.csv" all alumnos of the List.
+        /// Save (And create if not exists) into "alumnos_edades.csv" all alumnos of the Collection.
         /// Save their NIA, Name, Surname and Age.
         /// </summary>
-        /// <param name="alumnos">List of Alumnos to be saved</param>
-        public static void SaveAlumnosWithAges(HashSet<Alumno> alumnos)
+        /// <param name="alumnos">Collection of Alumnos to be saved</param>
+        public static void SaveAlumnosWithAges(ICollection<Alumno> alumnos)
         {
             string filePath = DirectoryService.GetFilePath("alumnos_edades.csv");
             try
@@ -40,9 +40,9 @@ namespace T01_Ejercicios_Manejo_Ficheros.Servicios
         /// year of birth. Each year is associated with a distinct set of students who share that birth year.</remarks>
         /// <param name="alumnosToProcess">A collection of students to process. Each student must have a valid birth year.</param>
         /// <returns>A dictionary where the keys are birth years and the values are sets of students born in those years.</returns>
-        public static Dictionary<int, HashSet<Alumno>> GetDiccionarioAnyosNacimiento(HashSet<Alumno> alumnosToProcess)
+        public static Dictionary<int, ICollection<Alumno>> GetDiccionarioAnyosNacimiento(ICollection<Alumno> alumnosToProcess)
         {
-            Dictionary<int, HashSet<Alumno>> alumnos = new Dictionary<int, HashSet<Alumno>>();
+            Dictionary<int, ICollection<Alumno>> alumnos = new Dictionary<int, ICollection<Alumno>>();
             foreach(Alumno alumno in alumnosToProcess)
             {
                 int year = alumno.BirthDay.Year;
@@ -52,7 +52,15 @@ namespace T01_Ejercicios_Manejo_Ficheros.Servicios
             return alumnos;
         }
 
-        public static void SaveListadoEdadesAlumnos(Dictionary<int, HashSet<Alumno>> alumnosToBeSaved)
+        /// <summary>
+        /// Saves a list of students grouped by age to a text file.
+        /// </summary>
+        /// <remarks>The method writes the data to a file named "informe_edades.txt" in the directory
+        /// specified by  <see cref="DirectoryService.GetFilePath(string)"/>. Each age group is written on a new line, 
+        /// followed by the names and surnames of the students in that group.</remarks>
+        /// <param name="alumnosToBeSaved">A dictionary where the key represents the age of the students, and the value is a collection of  <see
+        /// cref="Alumno"/> objects corresponding to that age group.</param>
+        public static void SaveListadoEdadesAlumnos(Dictionary<int, ICollection<Alumno>> alumnosToBeSaved)
         {
             try
             {
