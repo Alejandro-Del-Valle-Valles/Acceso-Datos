@@ -1,3 +1,25 @@
-﻿1	Alejandro	Del Valle Vallés	13/05/2006	9,6	Superior	true	19
-2	Miguel	Del Valle Vallés	01/04/2004	9,6	Superior	false	21
-3	Rafa	Andrés Villanueva	23/11/2016	9,6	Basica	true	9
+﻿4800	Laura	Flores López	15/01/1996	8.38	Medio	false
+7184	Luis	Torres López	01/06/1999	8.78	Basica	false
+7601	Carlos	Ramírez Sánchez	25/01/1999	5.42	Medio	false
+4100	José	González García	10/06/1995	6.13	Superior	false
+6710	Luis	García Flores	18/12/1990	6.28	Medio	true
+3362	Juan	Torres Sánchez	27/06/1998	9.74	Basica	false
+5708	Laura	López García	27/12/1993	9.05	Medio	false
+1043	Marta	Flores Ramírez	06/02/1992	7.65	Basica	true
+3110	Carlos	Rodríguez Sánchez	08/08/1991	8.21	Medio	false
+9262	María	López Sánchez	27/05/2005	8.08	Medio	true
+3600	María	Martínez Torres	03/04/2008	7.88	Basica	false
+6627	Marta	Rodríguez Martínez	18/04/1994	10.00	Basica	false
+7372	Carlos	Martínez Pérez	18/03/2002	9.67	Medio	false
+5366	Ana	Rodríguez Pérez	12/10/1999	7.65	Medio	true
+9955	Pedro	Ramírez Flores	02/08/1997	5.24	Superior	true
+5036	Laura	Flores González	02/07/1992	5.66	Basica	true
+3444	Ana	Martínez Martínez	13/02/1995	9.23	Medio	true
+1306	Pedro	Pérez Ramírez	16/12/1994	8.95	Superior	true
+5715	Juan	Rodríguez García	13/01/2010	8.28	Basica	true
+7172	Laura	López Rodríguez	26/07/2010	9.53	Basica	false
+3362	Ana	Pérez Torres	22/06/1997	5.80	Medio	false
+6627	José	Ramírez Rodríguez	06/03/1993	7.94	Basica	false
+7184	Luis	Pérez García	06/07/1993	8.64	Basica	false
+1306	Luis	Sánchez López	01/12/1992	5.93	Basica	false
+3110	María	Ramírez García	11/06/1996	8.35	Basica	true

@@ -64,11 +64,10 @@ namespace T01_Ejercicios_Manejo_Ficheros.Repositorio
                 string[] attribs = data.Split('\t');
                 int Nia = int.Parse(attribs[0]);
                 DateOnly birthDay = DateOnly.Parse(attribs[3]);
-                float averageScore = float.Parse(attribs[4]);
+                float averageScore = float.Parse(attribs[4], CultureInfo.InvariantCulture);
                 FpType grade = (FpType)Enum.Parse(typeof(FpType), attribs[5]);
                 bool isScholarship = bool.Parse(attribs[6]);
-                byte age = byte.Parse(attribs[7]);
-                newAlumno = new Alumno(Nia, attribs[1], attribs[2], birthDay, averageScore, grade, isScholarship, age);
+                newAlumno = new Alumno(Nia, attribs[1], attribs[2], birthDay, averageScore, grade, isScholarship);
             }
             catch(FormatException ex)
             {

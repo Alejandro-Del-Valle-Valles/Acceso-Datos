@@ -19,11 +19,11 @@ namespace T01_Ejercicios_Manejo_Ficheros.Apps
             {
                 using (StreamReader sr = new StreamReader(DirectoryService.GetFilePath("enteros.txt")))
                 {
-                    string? line = sr.ReadLine();
+                    string? line;
                     int numberOfNumbers = 0;
                     int actualNumber;
                     int numberOfPeers = 0;
-                    while (line != null)
+                    while ((line = sr.ReadLine()) != null)
                     {
                         Console.WriteLine(line);
                         numberOfNumbers++;
@@ -31,7 +31,6 @@ namespace T01_Ejercicios_Manejo_Ficheros.Apps
                         {
                             if(actualNumber % 2 == 0) numberOfPeers++;
                         }
-                        line = sr.ReadLine();
                     }
                     Console.WriteLine($"Hay un total de {numberOfNumbers} números.\nDe los cuales {numberOfPeers} son pares");
                 }

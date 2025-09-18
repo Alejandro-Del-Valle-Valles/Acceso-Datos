@@ -1,4 +1,7 @@
 ﻿using T01_Ejercicios_Manejo_Ficheros.Apps;
+using T01_Ejercicios_Manejo_Ficheros.Modelo;
+using T01_Ejercicios_Manejo_Ficheros.Repositorio;
+using T01_Ejercicios_Manejo_Ficheros.Servicios;
 
 namespace T01_Ejercicios_Manejo_Ficheros
 {
@@ -6,7 +9,10 @@ namespace T01_Ejercicios_Manejo_Ficheros
     {
         static void Main(string[] args)
         {
-            Ejercicio08App.Start();   
+            foreach (Alumno alumno in AlumnosRepositorio.GetAlumnos(DirectoryService.GetFilePath("alumnos.txt")))
+            {
+                Console.WriteLine(alumno);
+            }
         }
     }
 }

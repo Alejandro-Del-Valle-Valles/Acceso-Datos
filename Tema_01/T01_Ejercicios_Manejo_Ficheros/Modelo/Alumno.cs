@@ -2,7 +2,7 @@
 
 namespace T01_Ejercicios_Manejo_Ficheros.Modelo
 {
-    public class Alumno
+    public class Alumno : IComparable<Alumno>
     {
         private static DateOnly ActualDate = DateOnly.FromDateTime(DateTime.Today);
 
@@ -22,7 +22,9 @@ namespace T01_Ejercicios_Manejo_Ficheros.Modelo
         public DateOnly BirthDay
         {
             get => _birthDay;
-            set => _birthDay = value > ActualDate ? _birthDay : value;
+            set => _birthDay = value > ActualDate
+                ? _birthDay
+                : value;
         }
 
         private float _averageScore = 0f;
@@ -33,14 +35,11 @@ namespace T01_Ejercicios_Manejo_Ficheros.Modelo
         }
         public FpType Grade { get; set; }
         public bool IsScholarship { get; set; }
-
-        private byte _age;
-        public byte Age {
-            get => _age;
-            set => _age = (byte)(value < 0 ? 0 : value);
+        public int Age {
+            get => ActualDate.Year - BirthDay.Year;
         }
 
-        public Alumno(int Nia, string name, string surname, DateOnly birthDay, float averageScore, FpType grade, bool isScholarship,byte age)
+        public Alumno(int Nia, string name, string surname, DateOnly birthDay, float averageScore, FpType grade, bool isScholarship)
         {
             NIA = Nia;
             Name = name;
@@ -49,7 +48,6 @@ namespace T01_Ejercicios_Manejo_Ficheros.Modelo
             AverageScore = averageScore;
             Grade = grade;
             IsScholarship = isScholarship; //True if have a Scholarship, else if not
-            Age = age;
         }
 
         public override string ToString()
@@ -74,6 +72,13 @@ namespace T01_Ejercicios_Manejo_Ficheros.Modelo
         public override int GetHashCode()
         {
             return HashCode.Combine(NIA);
+        }
+
+        public int CompareTo(Alumno? other)
+        {
+            return other == null
+                ? 1
+                : other.NIA.CompareTo(NIA);
         }
     }
 }
