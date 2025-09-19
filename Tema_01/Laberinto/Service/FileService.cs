@@ -2,6 +2,15 @@
 {
     internal static class FileService
     {
+        /// <summary>
+        /// Retrieves all file paths from the specified directory.
+        /// </summary>
+        /// <remarks>This method attempts to retrieve all files in the specified directory. If the caller
+        /// does not have  the necessary permissions to access the directory, or if another error occurs, the method
+        /// will log  the error to the console and return <see langword="null"/>.</remarks>
+        /// <param name="directoryPath">The path of the directory to search. This must be a valid directory path.</param>
+        /// <returns>An array of strings containing the full paths of all files in the specified directory,  or <see
+        /// langword="null"/> if an error occurs during the operation.</returns>
         public static string[]? GetAllFiles(string directoryPath)
         {
             string[]? files = null;
@@ -38,11 +47,11 @@
                     List<string> lines = new List<string>();
                     while((line = sr.ReadLine()) != null) lines.Add(line.Trim());
 
-                    byte columns = (byte)lines[0].Length;
+                    int columns = lines[0].Length;
                     maze = new char[lines.Count, columns];
-                    for(byte i = 0; i < maze.GetLength(0); i++)
+                    for(int i = 0; i < maze.GetLength(0); i++)
                     {
-                        for(byte j = 0; j < maze.GetLength(1); j++)
+                        for(int j = 0; j < maze.GetLength(1); j++)
                         {
                             maze[i, j] = lines[i][j]; //For each char of the line, this add it to an specific cord of the array.
                         }
@@ -59,7 +68,7 @@
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ha ocurrido un error inesperado: {ex.Message}");
+                Console.WriteLine($"Ha ocurrido un error inesperado: {ex.StackTrace}");
             }
             return maze;
         }
