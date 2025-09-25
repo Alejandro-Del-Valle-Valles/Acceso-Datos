@@ -8,10 +8,13 @@ namespace Test_JSON
     {
         static void Main(string[] args)
         {
-            List<Person> persons = PersonsRepository.GetPersons();
+            /*List<Person> persons = PersonsRepository.GetPersons();
             bool isSerialized = JsonService.SerializePersons(persons);
             if (isSerialized) Console.WriteLine("Ha sido serializado con éxito.");
-            else Console.WriteLine("No se ha podido serializar. :(");
+            else Console.WriteLine("No se ha podido serializar. :(");*/
+
+            var persons = JsonService.DeserializePersons();
+            if(persons != null) foreach (Person person in persons) Console.WriteLine(person);
         }
     }
 }

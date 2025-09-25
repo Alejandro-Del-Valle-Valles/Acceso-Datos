@@ -34,9 +34,27 @@ namespace Test_JSON.Service
             return isSerialized;
         }
 
-        public static List<Person> DeserializePersons()
+        public static List<Person>? DeserializePersons()
         {
-            return null;
+            List<Person>? persons = null;
+            try
+            {
+                string json = File.ReadAllText(DirectoryService.GetPath("persons.json"));
+                persons = JsonSerializer.Deserialize<List<Person>>(json);
+            }
+            catch (ArgumentNullException ex)
+            {
+                Console.WriteLine("El fichero del que se trata de deserializar no existe.");
+            }
+            catch(JsonException ex)
+            {
+                Console.WriteLine($"El fcihero no contiene datos o no está bien estructurado.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ha ocurrido un error inesperado: {ex.Message}");
+            }
+            return persons;
         }
     }
 }
