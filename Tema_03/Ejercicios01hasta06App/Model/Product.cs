@@ -1,11 +1,22 @@
 ﻿
+using Ejercicios01hasta06App.Exceptions;
+
 namespace Ejercicios01hasta06App.Model
 {
     internal class Product : IEquatable<Product?>
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public float Price { get; set; }
+
+        private float _price;
+        public float Price {
+            get => _price;
+            set
+            {
+                if (value < 10 || value > 99.99) throw new PriceOutOfRangeException();
+                else _price = value;
+            }
+        }
         public int? Stock { get; set; }
         public bool InSale { get; set; }
 
