@@ -1,0 +1,27 @@
+[
+  {
+    "nombre": "Ana López García",
+    "correo": "ana.lopez@email.com",
+    "fechaNacimiento": "1990-04-12"
+  },
+  {
+    "nombre": "Carlos Pérez Muñoz",
+    "correo": "carlos.perez@email.com",
+    "fechaNacimiento": "1985-09-23"
+  },
+  {
+    "nombre": "Lucía Ramírez Torres",
+    "correo": "lucia.ramirez@email.com",
+    "fechaNacimiento": "1998-01-07"
+  },
+  {
+    "nombre": "Miguel Torres Sánchez",
+    "correo": "miguel.torres@email.com",
+    "fechaNacimiento": "1975-12-15"
+  },
+  {
+    "nombre": "Sofía González Martín",
+    "correo": "sofia.gonzalez@email.com",
+    "fechaNacimiento": "2002-06-30"
+  }
+]

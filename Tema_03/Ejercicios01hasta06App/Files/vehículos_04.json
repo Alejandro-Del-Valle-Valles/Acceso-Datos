@@ -1,0 +1,110 @@
+[
+  {
+    "matricula": "M1234ZT",
+    "fechaMatriculacion": "1999-05-10",
+    "color": "Rojo",
+    "marca": "Toyota",
+    "modelo": "Corolla",
+    "caballos": 132,
+    "longitud": 4.63,
+    "electrico": false
+  },
+  {
+    "matricula": "5678DEF",
+    "fechaMatriculacion": "2024-02-15",
+    "color": "Negro",
+    "marca": "Tesla",
+    "caballos": 384,
+    "longitud": 4.75,
+    "electrico": true
+  },
+  {
+    "matricula": "2345GHI",
+    "fechaMatriculacion": "2022-09-09",
+    "color": "Azul",
+    "marca": "Ford",
+    "modelo": "Transit",
+    "caballos": 170,
+    "longitud": 5.98,
+    "electrico": false
+  },
+  {
+    "matricula": "9012JKL",
+    "fechaMatriculacion": "2021-12-20",
+    "color": "Gris",
+    "modelo": "Zoe",
+    "caballos": 110,
+    "longitud": 4.08,
+    "electrico": true
+  },
+  {
+    "matricula": "3456MNO",
+    "fechaMatriculacion": "2020-07-04",
+    "color": "Blanco",
+    "marca": "Volkswagen",
+    "modelo": "Golf",
+    "caballos": 150,
+    "longitud": 4.28,
+    "electrico": false
+  },
+  {
+    "matricula": "7890PQR",
+    "fechaMatriculacion": "2023-11-18",
+    "color": "Verde",
+    "marca": "Hyundai",
+    "modelo": "Ioniq 5",
+    "caballos": 217,
+    "longitud": 4.64,
+    "electrico": true
+  },
+  {
+    "matricula": "6543STU",
+    "fechaMatriculacion": "2022-03-30",
+    "color": "Amarillo",
+    "marca": "Citroen",
+    "modelo": "Berlingo",
+    "caballos": 131,
+    "longitud": 4.75,
+    "electrico": false
+  },
+  {
+    "matricula": "8765VWX",
+    "fechaMatriculacion": "2024-01-25",
+    "color": "Azul",
+    "marca": "Kia",
+    "modelo": "EV6",
+    "caballos": 229,
+    "longitud": 4.68,
+    "electrico": true
+  },
+  {
+    "matricula": "3210YZA",
+    "fechaMatriculacion": "2000-04-12",
+    "color": "Negro",
+    "marca": "Peugeot",
+    "modelo": "308 SW",
+    "caballos": 130,
+    "longitud": 4.58,
+    "electrico": false
+  },
+  {
+    "matricula": "5865ZKK",
+    "fechaMatriculacion": "2025-01-25",
+    "color": "Gris",
+    "marca": "Kia",
+    "modelo": "Sportage",
+    "caballos": 250,
+    "longitud": 4.48,
+    "electrico": false
+  },
+  {
+    "matricula": "1122BCD",
+    "fechaMatriculacion": "2023-08-19",
+    "color": "Rojo",
+    "marca": "BMW",
+    "modelo": "iX3",
+    "caballos": 286,
+    "longitud": 4.73,
+    "electrico": true
+  }
+]
