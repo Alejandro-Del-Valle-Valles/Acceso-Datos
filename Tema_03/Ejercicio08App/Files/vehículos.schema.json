@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Vehiculo",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "matricula": { "type": "string" },
+      "fechaMatriculacion": { "type": "string", "format": "date" },
+      "color": { "type": "string" },
+      "marca": { "type": "string" },
+      "modelo": { "type": "string" },
+      "tipo": { "type": "string" },
+      "caballos": { "type": "integer" },
+      "longitud": { "type": "number" },
+      "electrico": { "type": "boolean" }
+    },
+    "required": [
+      "matricula",
+      "fechaMatriculacion",
+      "color",
+      "marca",
+      "modelo",
+      "caballos",
+      "longitud",
+      "electrico"
+    ],
+    "additionalProperties": false
+  }
+}

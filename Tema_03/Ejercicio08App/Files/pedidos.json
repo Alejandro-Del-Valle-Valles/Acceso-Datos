@@ -1,0 +1,242 @@
+[
+  {
+    "codigo": "f5b5d1e1-7b8e-4ae8-9c9e-89a5c25d4f01",
+    "cliente": "ana.lopez@email.com",
+    "fechaHora": "2022-05-12T14:22:00",
+    "detalle": [
+      {
+        "nombre": "Monitor",
+        "precio": 150.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Teclado",
+        "precio": 25.50,
+        "enOferta": true
+      },
+      {
+        "nombre": "Ratón",
+        "precio": 15.75,
+        "enOferta": false
+      }
+    ]
+  },
+  {
+    "codigo": "a1d2b1c2-3e4f-5a6b-7c8d-9e0f1a2b3c4d",
+    "cliente": "carlos.perez@email.com",
+    "fechaHora": "2021-11-08T10:45:10",
+    "detalle": [
+      {
+        "nombre": "Teclado",
+        "precio": 25.50,
+        "enOferta": true
+      },
+      {
+        "nombre": "Impresora",
+        "precio": 89.90,
+        "enOferta": true
+      },
+      {
+        "nombre": "Altavoces",
+        "precio": 45.00,
+        "enOferta": true
+      }
+    ]
+  },
+  {
+    "codigo": "b4f3a2c1-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+    "cliente": "lucia.ramirez@email.com",
+    "fechaHora": "2019-03-21T18:01:00",
+    "detalle": [
+      {
+        "nombre": "Ratón",
+        "precio": 15.75,
+        "enOferta": false
+      },
+      {
+        "nombre": "Webcam",
+        "precio": 39.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Auriculares",
+        "precio": 29.99,
+        "enOferta": true
+      }
+    ]
+  },
+  {
+    "codigo": "c2d3e4f5-a6b7-c8d9-e0f1-a2b3c4d5e6f7",
+    "cliente": "miguel.torres@email.com",
+    "fechaHora": "2020-07-15T09:35:00",
+    "detalle": [
+      {
+        "nombre": "Impresora",
+        "precio": 89.90,
+        "enOferta": true
+      },
+      {
+        "nombre": "Monitor",
+        "precio": 150.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Tablet",
+        "precio": 220.00,
+        "enOferta": true
+      },
+      {
+        "nombre": "Teclado",
+        "precio": 25.50,
+        "enOferta": true
+      }
+    ]
+  },
+  {
+    "codigo": "d6e5f4a3-b2c1-d0e9-f8a7-b6c5d4e3f2a1",
+    "cliente": "sofia.gonzalez@email.com",
+    "fechaHora": "2023-02-28T16:10:00",
+    "detalle": [
+      {
+        "nombre": "Altavoces",
+        "precio": 45.00,
+        "enOferta": true
+      },
+      {
+        "nombre": "Webcam",
+        "precio": 39.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Auriculares",
+        "precio": 29.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Monitor",
+        "precio": 150.99,
+        "enOferta": true
+      }
+    ]
+  },
+  {
+    "codigo": "e7f6a5b4-c3d2-e1f0-a9b8-c7d6e5f4a3b2",
+    "cliente": "ana.lopez@email.com",
+    "fechaHora": "2018-10-06T13:59:00",
+    "detalle": [
+      {
+        "nombre": "Ratón",
+        "precio": 15.75,
+        "enOferta": false
+      },
+      {
+        "nombre": "Impresora",
+        "precio": 89.90,
+        "enOferta": true
+      },
+      {
+        "nombre": "Tablet",
+        "precio": 220.00,
+        "enOferta": true
+      },
+      {
+        "nombre": "Disco Duro",
+        "precio": 65.50,
+        "enOferta": true
+      }
+    ]
+  },
+  {
+    "codigo": "f8a7b6c5-d4e3-f2a1-b0c9-d8e7f6a5b4c3",
+    "cliente": "carlos.perez@email.com",
+    "fechaHora": "2017-06-19T20:44:00",
+    "detalle": [
+      {
+        "nombre": "Teclado",
+        "precio": 25.50,
+        "enOferta": true
+      },
+      {
+        "nombre": "Auriculares",
+        "precio": 29.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Cámara",
+        "precio": 120.00,
+        "enOferta": true
+      }
+    ]
+  },
+  {
+    "codigo": "a9b8c7d6-e5f4-a3b2-c1d0-e9f8a7b6c5d4",
+    "cliente": "lucia.ramirez@email.com",
+    "fechaHora": "2016-12-02T11:28:00",
+    "detalle": [
+      {
+        "nombre": "Monitor",
+        "precio": 150.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Altavoces",
+        "precio": 45.00,
+        "enOferta": true
+      },
+      {
+        "nombre": "Tablet",
+        "precio": 220.00,
+        "enOferta": true
+      }
+    ]
+  },
+  {
+    "codigo": "b0c9d8e7-f6a5-b4c3-d2e1-f0a9b8c7d6e5",
+    "cliente": "miguel.torres@email.com",
+    "fechaHora": "2020-04-21T08:12:00",
+    "detalle": [
+      {
+        "nombre": "Webcam",
+        "precio": 39.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Disco Duro",
+        "precio": 65.50,
+        "enOferta": true
+      },
+      {
+        "nombre": "Auriculares",
+        "precio": 29.99,
+        "enOferta": true
+      },
+      {
+        "nombre": "Cámara",
+        "precio": 120.00,
+        "enOferta": true
+      }
+    ]
+  },
+  {
+    "codigo": "c1d0e9f8-a7b6-c5d4-e3f2-a1b0c9d8e7f6",
+    "cliente": "sofia.gonzalez@email.com",
+    "fechaHora": "2015-09-03T07:55:00",
+    "detalle": [
+      {
+        "nombre": "Altavoces",
+        "precio": 45.00,
+        "enOferta": true
+      },
+      {
+        "nombre": "Ratón",
+        "precio": 15.75,
+        "enOferta": false
+      },
+      {
+        "nombre": "Disco Duro",
+        "precio": 65.50,
+        "enOferta": true
+      }
+    ]
+  }
+]
