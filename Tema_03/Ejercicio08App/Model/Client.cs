@@ -14,30 +14,17 @@ namespace Ejercicio08App.Model
             FechaNacimiento = bornDate;
         }
 
-        public override bool Equals(object? obj)
-        {
-            return Equals(obj as Client);
-        }
+        public override string ToString() => $"Nombre: {Nombre}, Correo: {Correo}, Fecha de Nacimiento: {FechaNacimiento}";
 
-        public bool Equals(Client? other)
-        {
-            return other is not null &&
-                   Correo == other.Correo;
-        }
+        public override bool Equals(object? obj) => Equals(obj as Client);
+        
+        public bool Equals(Client? other) => other is not null && Correo == other.Correo;
+        
+        public override int GetHashCode() => HashCode.Combine(Correo);
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Correo);
-        }
+        public static bool operator ==(Client? left, Client? right) => EqualityComparer<Client>.Default.Equals(left, right);
 
-        public static bool operator ==(Client? left, Client? right)
-        {
-            return EqualityComparer<Client>.Default.Equals(left, right);
-        }
-
-        public static bool operator !=(Client? left, Client? right)
-        {
-            return !(left == right);
-        }
+        public static bool operator !=(Client? left, Client? right) => !(left == right);
+        
     }
 }

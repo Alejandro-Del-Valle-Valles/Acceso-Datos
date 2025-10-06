@@ -3,39 +3,31 @@ namespace Ejercicio08App.Model
 {
     internal class Order : IEquatable<Order?>
     {
-        public Order()
-        {
-        }
-
         public Guid Codigo { get; set; }
-        public Client cliente { get; set; }
-        public DateTime fechaHora { get; set; }
-        public IList<Product> Detalles { get; set; }
+        public string Cliente { get; set; }
+        public DateTime FechaHora { get; set; }
+        public IList<Product> Detalle { get; set; }
 
-        public override bool Equals(object? obj)
+        public Order(Guid codigo, string cliente, DateTime fechaHora, IList<Product> detalle)
         {
-            return Equals(obj as Order);
+            Codigo = codigo;
+            Cliente = cliente;
+            FechaHora = fechaHora;
+            Detalle = detalle;
         }
 
-        public bool Equals(Order? other)
-        {
-            return other is not null &&
-                   Codigo.Equals(other.Codigo);
-        }
+        public override string ToString() => 
+            $"Pedido(\nCódigo: {Codigo},\nCliente: {Cliente}\nFecha y Hora: {FechaHora}\nDetalles[\n\t{string.Join("\n\t", Detalle.Select(p => p.ToString()))}\n\t]\n)";
 
-        public override int GetHashCode()
-        {
-            return HashCode.Combine(Codigo);
-        }
+        public override bool Equals(object? obj) => Equals(obj as Order);
 
-        public static bool operator ==(Order? left, Order? right)
-        {
-            return EqualityComparer<Order>.Default.Equals(left, right);
-        }
+        public bool Equals(Order? other) => other is not null && Codigo.Equals(other.Codigo);
+        
 
-        public static bool operator !=(Order? left, Order? right)
-        {
-            return !(left == right);
-        }
+        public override int GetHashCode() => HashCode.Combine(Codigo);
+
+        public static bool operator ==(Order? left, Order? right) => EqualityComparer<Order>.Default.Equals(left, right);
+
+        public static bool operator !=(Order? left, Order? right) => !(left == right);
     }
 }

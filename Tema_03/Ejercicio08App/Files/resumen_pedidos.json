@@ -1,0 +1,132 @@
+[
+  {
+    "Codigo": "f5b5d1e1-7b8e-4ae8-9c9e-89a5c25d4f01",
+    "FechaCreacion": "12/05/2022 - 14:22",
+    "Cliente": {
+      "Nombre": "Ana López García",
+      "Correo": "ana.lopez@email.com",
+      "FechaNacimiento": "1990-04-12"
+    },
+    "Tipo": "Otro",
+    "ProductoMasCaro": "Monitor",
+    "Total": 192.24,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "a1d2b1c2-3e4f-5a6b-7c8d-9e0f1a2b3c4d",
+    "FechaCreacion": "08/11/2021 - 10:45",
+    "Cliente": {
+      "Nombre": "Carlos Pérez Muñoz",
+      "Correo": "carlos.perez@email.com",
+      "FechaNacimiento": "1985-09-23"
+    },
+    "Tipo": "Normal",
+    "ProductoMasCaro": "Impresora",
+    "Total": 160.4,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "b4f3a2c1-5d6e-7f8a-9b0c-1d2e3f4a5b6c",
+    "FechaCreacion": "21/03/2019 - 18:01",
+    "Cliente": {
+      "Nombre": "Lucía Ramírez Torres",
+      "Correo": "lucia.ramirez@email.com",
+      "FechaNacimiento": "1998-01-07"
+    },
+    "Tipo": "Normal",
+    "ProductoMasCaro": "Webcam",
+    "Total": 85.73,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "c2d3e4f5-a6b7-c8d9-e0f1-a2b3c4d5e6f7",
+    "FechaCreacion": "15/07/2020 - 09:35",
+    "Cliente": {
+      "Nombre": "Miguel Torres Sánchez",
+      "Correo": "miguel.torres@email.com",
+      "FechaNacimiento": "1975-12-15"
+    },
+    "Tipo": "Otro",
+    "ProductoMasCaro": "Tablet",
+    "Total": 486.39,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "d6e5f4a3-b2c1-d0e9-f8a7-b6c5d4e3f2a1",
+    "FechaCreacion": "28/02/2023 - 16:10",
+    "Cliente": {
+      "Nombre": "Sofía González Martín",
+      "Correo": "sofia.gonzalez@email.com",
+      "FechaNacimiento": "2002-06-30"
+    },
+    "Tipo": "Urgente",
+    "ProductoMasCaro": "Monitor",
+    "Total": 265.97,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "e7f6a5b4-c3d2-e1f0-a9b8-c7d6e5f4a3b2",
+    "FechaCreacion": "06/10/2018 - 13:59",
+    "Cliente": {
+      "Nombre": "Ana López García",
+      "Correo": "ana.lopez@email.com",
+      "FechaNacimiento": "1990-04-12"
+    },
+    "Tipo": "Urgente",
+    "ProductoMasCaro": "Tablet",
+    "Total": 391.15,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "f8a7b6c5-d4e3-f2a1-b0c9-d8e7f6a5b4c3",
+    "FechaCreacion": "19/06/2017 - 20:44",
+    "Cliente": {
+      "Nombre": "Carlos Pérez Muñoz",
+      "Correo": "carlos.perez@email.com",
+      "FechaNacimiento": "1985-09-23"
+    },
+    "Tipo": "Otro",
+    "ProductoMasCaro": "Cámara",
+    "Total": 175.49,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "a9b8c7d6-e5f4-a3b2-c1d0-e9f8a7b6c5d4",
+    "FechaCreacion": "02/12/2016 - 11:28",
+    "Cliente": {
+      "Nombre": "Lucía Ramírez Torres",
+      "Correo": "lucia.ramirez@email.com",
+      "FechaNacimiento": "1998-01-07"
+    },
+    "Tipo": "Otro",
+    "ProductoMasCaro": "Tablet",
+    "Total": 415.99,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "b0c9d8e7-f6a5-b4c3-d2e1-f0a9b8c7d6e5",
+    "FechaCreacion": "21/04/2020 - 08:12",
+    "Cliente": {
+      "Nombre": "Miguel Torres Sánchez",
+      "Correo": "miguel.torres@email.com",
+      "FechaNacimiento": "1975-12-15"
+    },
+    "Tipo": "Otro",
+    "ProductoMasCaro": "Cámara",
+    "Total": 255.48,
+    "Entregado": "Sí"
+  },
+  {
+    "Codigo": "c1d0e9f8-a7b6-c5d4-e3f2-a1b0c9d8e7f6",
+    "FechaCreacion": "03/09/2015 - 07:55",
+    "Cliente": {
+      "Nombre": "Sofía González Martín",
+      "Correo": "sofia.gonzalez@email.com",
+      "FechaNacimiento": "2002-06-30"
+    },
+    "Tipo": "Normal",
+    "ProductoMasCaro": "Disco Duro",
+    "Total": 126.25,
+    "Entregado": "Sí"
+  }
+]

@@ -1,4 +1,5 @@
-﻿using Ejercicio08App.services;
+﻿using Ejercicio08App.Repositories;
+using Ejercicio08App.services;
 
 namespace Ejercicio08App
 {
@@ -6,7 +7,7 @@ namespace Ejercicio08App
     {
         static void Main(string[] args)
         {
-            VehiclesService.ShowValidationOfEachVehicleFile();
+            OrderResumService.GenerateOrdersResum();
         }
     }
 }

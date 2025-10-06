@@ -4,40 +4,39 @@ using Newtonsoft.Json;
 
 namespace Ejercicio08App.Repositories
 {
-    internal class ClientJsonRepository : ICrudRepository<Client, string>
+    internal class OrdersJsonRepository : ICrudRepository<Order, Guid>
     {
-        private const string PATH = @"../../../Files/clientes.json";
-        public bool Add(Client t)
+        private const string PATH = "../../../Files/pedidos.json";
+        public bool Add(Order t)
         {
             throw new NotImplementedException();
         }
 
-        public List<Client>? FindAll() => JsonConvert.DeserializeObject<HashSet<Client>>(
-                File.ReadAllText(PATH)
-                )?.ToList();
-        
+        public List<Order>? FindAll() => JsonConvert.DeserializeObject<HashSet<Order>>(
+            File.ReadAllText(PATH)
+            )?.ToList();
 
-        public Client? FindById(string id)
+        public Order? FindById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public bool Remove(Client t)
+        public bool Remove(Order t)
         {
             throw new NotImplementedException();
         }
 
-        public bool RemoveById(string id)
+        public bool RemoveById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public bool Save(Client t)
+        public bool Save(Order t)
         {
             throw new NotImplementedException();
         }
 
-        public bool SaveAll(List<Client> entities)
+        public bool SaveAll(List<Order> entities)
         {
             throw new NotImplementedException();
         }
