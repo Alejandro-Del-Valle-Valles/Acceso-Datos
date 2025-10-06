@@ -1,0 +1,23 @@
+[
+  {
+    "Id": 1,
+    "Name": "Monitor",
+    "Price": 91.82,
+    "Stock": 12,
+    "InSale": true
+  },
+  {
+    "Id": 2,
+    "Name": "Teclado",
+    "Price": 25.5,
+    "Stock": 30,
+    "InSale": true
+  },
+  {
+    "Id": 3,
+    "Name": "Rat\u00F3n",
+    "Price": 15.95,
+    "Stock": 4,
+    "InSale": false
+  }
+]

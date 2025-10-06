@@ -1,10 +1,12 @@
-﻿namespace Ejercicio08App
+﻿using Ejercicio08App.services;
+
+namespace Ejercicio08App
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            VehiclesService.ShowValidationOfEachVehicleFile();
         }
     }
 }

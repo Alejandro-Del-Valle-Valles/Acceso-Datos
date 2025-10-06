@@ -5,7 +5,19 @@ namespace Ejercicios01hasta06App.Model
 {
     internal class Product : IEquatable<Product?>
     {
-        public int Id { get; set; }
+        private const float MIN_PRICE = 10f;
+        private const float MAX_PRICE = 99.99f;
+
+        private int _id;
+        public int Id
+        {
+            get => _id;
+            private set
+            {
+                if (value > 0) _id = value;
+                else throw new ArgumentException("El ID no puede ser inferior a 1");
+            }
+        }
         public string Name { get; set; }
 
         private float _price;
@@ -13,7 +25,7 @@ namespace Ejercicios01hasta06App.Model
             get => _price;
             set
             {
-                if (value < 10 || value > 99.99) throw new PriceOutOfRangeException();
+                if (value < MIN_PRICE || value > MAX_PRICE) throw new PriceOutOfRangeException();
                 else _price = value;
             }
         }

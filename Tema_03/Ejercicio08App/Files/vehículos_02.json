@@ -6,7 +6,7 @@
     "marca": "Toyota",
     "modelo": "Corolla",
     "caballos": 132,
-    "longitud": 4,63,
+    "longitud": 4.63,
     "electrico": false
   },
   {
@@ -16,7 +16,7 @@
     "marca": "Tesla",
     "modelo": "Model Y",
     "caballos": 384,
-    "longitud": 4,75,
+    "longitud": 4.75,
     "electrico": true
   },
   {
@@ -26,7 +26,7 @@
     "marca": "Ford",
     "modelo": "Transit",
     "caballos": 170,
-    "longitud": 5,98,
+    "longitud": 5.98,
     "electrico": false
   },
   {
