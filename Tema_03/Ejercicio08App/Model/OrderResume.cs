@@ -1,10 +1,14 @@
 ﻿using Ejercicio08App.Enums;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Ejercicio08App.Model
 {
     internal class OrderResume
     {
         public Guid Codigo { get; set; }
+
+        [JsonConverter(typeof(IsoDateTimeConverter))]
         public DateTime FechaCreacion { get; set; }
         public Client? Cliente { get; set; }
         public EOrderType Tipo { get; set; }

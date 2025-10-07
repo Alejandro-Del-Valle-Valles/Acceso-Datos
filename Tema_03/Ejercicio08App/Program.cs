@@ -7,7 +7,7 @@ namespace Ejercicio08App
     {
         static void Main(string[] args)
         {
-            OrderResumService.GenerateOrdersResum();
+            Console.WriteLine(OrderResumService.GetStats());
         }
     }
 }
