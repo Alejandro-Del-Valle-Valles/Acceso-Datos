@@ -11,7 +11,7 @@ namespace Ejercicio08App.Model
         [JsonConverter(typeof(IsoDateTimeConverter))]
         public DateTime FechaCreacion { get; set; }
         public Client? Cliente { get; set; }
-        public EOrderType Tipo { get; set; }
+        public OrderType Tipo { get; set; }
         public string? ProductoMasCaro { get; set; }
         public float? Total { get; set; }
         private bool EsEntregado { get; }
@@ -26,7 +26,7 @@ namespace Ejercicio08App.Model
             }
         }
 
-        public OrderResume(Guid codigo, DateTime fechaCreacion, Client cliente, EOrderType tipo, string productoMasCaro, float total)
+        public OrderResume(Guid codigo, DateTime fechaCreacion, Client cliente, OrderType tipo, string productoMasCaro, float total)
         {
             Codigo = codigo;
             FechaCreacion = fechaCreacion;

@@ -1,6 +1,6 @@
 ﻿namespace Ejercicio08App.Enums
 {
-    internal enum EOrderType
+    internal enum OrderType
     {
         Otro,
         Normal,
