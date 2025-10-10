@@ -1,10 +1,12 @@
-﻿namespace JsonPlaceholderApp
+﻿using JsonPlaceholderApp.Exercises;
+
+namespace JsonPlaceholderApp
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            
+            await Exercise13App.Start();
         }
     }
 }

@@ -17,5 +17,8 @@ namespace JsonPlaceholderApp.Service
 
             return userPosts;
         }
+
+        public static List<User>? GetUsers() => JsonConvert.DeserializeObject<List<User>>(File.ReadAllText("../../../Files/users.json"));
+        
     }
 }
