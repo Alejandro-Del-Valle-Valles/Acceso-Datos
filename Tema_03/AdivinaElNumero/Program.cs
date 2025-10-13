@@ -1,10 +1,13 @@
-﻿namespace AdivinaElNumero
+﻿using AdivinaElNumero.Exercises;
+
+namespace AdivinaElNumero
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Exercise17App app = new Exercise17App();
+            app.Start();
         }
     }
 }

@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "Brastak",
+    "Duration": "00:00:01",
+    "Attempts": 1,
+    "Word": "pez"
+  },
+  {
+    "Name": "Alex",
+    "Duration": "00:00:09",
+    "Attempts": 3,
+    "Word": "periquito"
+  },
+  {
+    "Name": "Miguel",
+    "Duration": "00:00:11",
+    "Attempts": 2,
+    "Word": "tortuga"
+  },
+  {
+    "Name": "Sof\u00EDa",
+    "Duration": "00:00:02",
+    "Attempts": 1,
+    "Word": "gato"
+  }
+]
