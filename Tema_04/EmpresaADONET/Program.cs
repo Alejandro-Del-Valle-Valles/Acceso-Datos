@@ -6,7 +6,7 @@ namespace EmpresaADONET
     {
         static void Main(string[] args)
         {
-            DBService.CheckConecction();
+            ClientPostgreDAO.CheckConecction();
         }
     }
 }
