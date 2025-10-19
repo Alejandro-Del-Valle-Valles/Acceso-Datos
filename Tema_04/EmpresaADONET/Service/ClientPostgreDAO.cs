@@ -50,6 +50,7 @@ namespace EmpresaADONET.Service
             using (var connection = new NpgsqlConnection(_path))
             using (var command = new NpgsqlCommand(query, connection))
             {
+                connection.Open();
                 command.Parameters.AddWithValue("@clientId", id);
                 int rowsAffected = command.ExecuteNonQuery();
                 isDeleted = rowsAffected > 0;
@@ -74,8 +75,7 @@ namespace EmpresaADONET.Service
                 {
                     while (reader.Read())
                     {
-                        DateOnly registrationDate = DateOnly.FromDateTime(reader.GetDateTime(3)); //Parse from DateTime to DateOnly
-                        listOfClients.Add(new(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), registrationDate,
+                        listOfClients.Add(new(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetDateTime(3),
                             reader.GetBoolean(4), reader.GetFloat(5), reader.GetInt32(6)));
                         //Create the client and add it into the list
                     }
@@ -98,13 +98,13 @@ namespace EmpresaADONET.Service
             using (var connection = new NpgsqlConnection(_path))
             using (var command = new NpgsqlCommand(query, connection))
             {
+                connection.Open();
                 command.Parameters.AddWithValue("@clientId", id);
                 using (var reader = command.ExecuteReader())
                 {
                     while(reader.Read()) //Only can be 1 row to read.
                     {
-                        DateOnly registrationDate = DateOnly.FromDateTime(reader.GetDateTime(3)); //Parse from DateTime to DateOnly
-                        client = new(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), registrationDate,
+                        client = new(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetDateTime(3),
                             reader.GetBoolean(4), reader.GetFloat(5), reader.GetInt32(6));
                     }
                 }
@@ -125,10 +125,11 @@ namespace EmpresaADONET.Service
             using (var connection = new NpgsqlConnection(_path))
             using (var command = new NpgsqlCommand(query, connection))
             {
+                connection.Open();
                 command.Parameters.AddWithValue("@id", clientToInsert.Id);
                 command.Parameters.AddWithValue("@nombre", clientToInsert.Name);
                 command.Parameters.AddWithValue("@email", clientToInsert.Email);
-                command.Parameters.AddWithValue("@registro", clientToInsert.RegistrationDate.ToDateTime(TimeOnly.MinValue));
+                command.Parameters.AddWithValue("@registro", clientToInsert.RegistrationDate);
                 command.Parameters.AddWithValue("@activo", clientToInsert.IsActive);
                 command.Parameters.AddWithValue("@descuento", clientToInsert.Discount);
                 command.Parameters.AddWithValue("@puntos", clientToInsert.FidelizationPoints);
@@ -152,10 +153,11 @@ namespace EmpresaADONET.Service
             using (var connection = new NpgsqlConnection(_path))
             using (var command = new NpgsqlCommand(query, connection))
             {
+                connection.Open();
                 command.Parameters.AddWithValue("@id", client.Id);
                 command.Parameters.AddWithValue("@nombre", client.Name);
                 command.Parameters.AddWithValue("@email", client.Email);
-                command.Parameters.AddWithValue("@registro", client.RegistrationDate.ToDateTime(TimeOnly.MinValue));
+                command.Parameters.AddWithValue("@registro", client.RegistrationDate);
                 command.Parameters.AddWithValue("@activo", client.IsActive);
                 command.Parameters.AddWithValue("@descuento", client.Discount);
                 command.Parameters.AddWithValue("@puntos", client.FidelizationPoints);

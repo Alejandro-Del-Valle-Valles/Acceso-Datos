@@ -1,4 +1,4 @@
-﻿using EmpresaADONET.Service;
+﻿using EmpresaADONET.Exercise;
 
 namespace EmpresaADONET
 {
@@ -6,7 +6,7 @@ namespace EmpresaADONET
     {
         static void Main(string[] args)
         {
-            ClientPostgreDAO.CheckConecction();
+            Exercise03App.Start();
         }
     }
 }

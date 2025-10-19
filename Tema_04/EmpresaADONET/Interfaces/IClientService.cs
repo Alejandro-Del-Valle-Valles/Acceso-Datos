@@ -7,8 +7,8 @@ namespace EmpresaADONET.Interfaces
     /// </summary>
     internal interface IClientService
     {
-        public Client Register(Client client);
-        public Client FindById(int id);
+        public bool Register(Client client);
+        public Client? FindById(int id);
         public IEnumerable<Client> FindByName(string name);
         public IEnumerable<Client> FindAll(bool onlyCurrenCostumers);
         public bool Update(Client client);

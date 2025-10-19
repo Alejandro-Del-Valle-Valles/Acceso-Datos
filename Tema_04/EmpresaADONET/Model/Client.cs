@@ -23,17 +23,17 @@ namespace EmpresaADONET.Model
             get => _email;
             set
             {
-                if (value.Trim().Length >= Data.MAX_LENGTH_CLIENT_EMAIL) _email = value;
+                if (value.Trim().Length <= Data.MAX_LENGTH_CLIENT_EMAIL) _email = value;
                 else throw new StringToLongException($"El email no puede tener más de {Data.MAX_LENGTH_CLIENT_EMAIL} caracteres.");
             }
         }
-        private DateOnly _registrationDate = new DateOnly();
-        public DateOnly RegistrationDate
+        private DateTime _registrationDate = new();
+        public DateTime RegistrationDate
         {
             get => _registrationDate;
             set
             {
-                if(value <= new DateOnly()) _registrationDate = value;
+                if(value <= DateTime.Now) _registrationDate = value;
             }
         }
         public bool IsActive { get; set; }
@@ -59,7 +59,7 @@ namespace EmpresaADONET.Model
         }
 
         //CONSTRUCTOR
-        public Client(int id, string name, string email, DateOnly registrationDate,
+        public Client(int id, string name, string email, DateTime registrationDate,
             bool isActive, float discount, int fidelizationPoints)
         {
             Id = id;
@@ -75,7 +75,7 @@ namespace EmpresaADONET.Model
         public override string ToString()
         {
             return $"Client(Id: {Id}, Name: {Name}, Email: {Email}, Registration Date: {RegistrationDate}, Is Active: {IsActive}, " +
-                $"Discount: {Discount}%, Fidelization Points: {FidelizationPoints}.)";
+                $"Discount: {Discount:.2f}%, Fidelization Points: {FidelizationPoints}.)";
         }
 
         /// <summary>
