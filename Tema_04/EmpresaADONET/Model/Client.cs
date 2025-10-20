@@ -47,20 +47,20 @@ namespace EmpresaADONET.Model
                 else throw new InvalidValueException("El descuento introducido no es válido.");
             }
         }
-        private int _fidelizationPoints = 0;
-        public int FidelizationPoints
+        private int _loyaltyPoints = 0;
+        public int LoyaltyPoints
         {
-            get => _fidelizationPoints;
+            get => _loyaltyPoints;
             set
             {
-                if (value >= 0) _fidelizationPoints = value;
+                if (value >= 0) _loyaltyPoints = value;
                 else throw new InvalidValueException("Los puntos de fidelidad no pueden ser inferiores a 0.");
             }
         }
 
         //CONSTRUCTOR
         public Client(int id, string name, string email, DateTime registrationDate,
-            bool isActive, float discount, int fidelizationPoints)
+            bool isActive, float discount, int loyaltyPoints)
         {
             Id = id;
             Name = name;
@@ -68,18 +68,18 @@ namespace EmpresaADONET.Model
             RegistrationDate = registrationDate;
             IsActive = isActive;
             Discount = discount;
-            FidelizationPoints = fidelizationPoints;
+            LoyaltyPoints = loyaltyPoints;
         }
 
         //METHODS
         public override string ToString()
         {
-            return $"Client(Id: {Id}, Name: {Name}, Email: {Email}, Registration Date: {RegistrationDate}, Is Active: {IsActive}, " +
-                $"Discount: {Discount:.2f}%, Fidelization Points: {FidelizationPoints}.)";
+            return $"Client(Id: {Id}, Name: {Name}, Email: {Email}, Registration Date: {RegistrationDate:dd/MM/yyyy}, Is Active: {IsActive}, " +
+                $"Discount: {Discount}%, Loyalty Points: {LoyaltyPoints}.)";
         }
 
         /// <summary>
-        /// Two objects are equal if they are Clientas and have the same ID
+        /// Two objects are equal if they are Clients and have the same ID
         /// </summary>
         /// <param name="obj">object to compare</param>
         /// <returns>bool, true if they are equal, false otherwise</returns>
@@ -88,24 +88,26 @@ namespace EmpresaADONET.Model
         /// <summary>
         /// Two clients are equal if they have the same ID
         /// </summary>
-        /// <param name="obj">object to compare</param>
+        /// <param name="other">Client to compare</param>
         /// <returns>bool, true if they are equal, false otherwise</returns>
         public bool Equals(Client? other) => other is not null &&
-            Id == other.Id;
+                                             Id == other.Id;
 
         public override int GetHashCode() => HashCode.Combine(Id);
 
         /// <summary>
         /// Two clients are equal if they have the same ID
         /// </summary>
-        /// <param name="obj">object to compare</param>
+        /// <param name="left">object to compare</param>
+        /// <param name="right">object to compare</param>
         /// <returns>bool, true if they are equal, false otherwise</returns>
         public static bool operator ==(Client? left, Client? right) => EqualityComparer<Client>.Default.Equals(left, right);
 
         /// <summary>
-        /// Two clients are differents if they have different ID
+        /// Two clients are different if they have different ID
         /// </summary>
-        /// <param name="obj">object to compare</param>
+        /// <param name="left">object to compare</param>
+        /// <param name="right">object to compare</param>
         /// <returns>bool, true if they are equal, false otherwise</returns>
         public static bool operator !=(Client? left, Client? right) => !(left == right);
     }

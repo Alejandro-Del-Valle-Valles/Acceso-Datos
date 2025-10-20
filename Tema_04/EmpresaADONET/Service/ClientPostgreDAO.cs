@@ -9,7 +9,7 @@ namespace EmpresaADONET.Service
     /// </summary>
     internal class ClientPostgreDAO : ICrudDAO<Client, int>
     {
-        private static readonly string _path = "HOST=localhost;Port=54320;Database=empresa;Username=root;Password=1234;";
+        private static readonly string Path = "HOST=localhost;Port=54320;Database=empresa;Username=root;Password=1234;";
         /*El de clase
          * "HOST=localhost;Port:5432;Database=empresa;Username=postgres;Password=1234;";
          */
@@ -17,13 +17,13 @@ namespace EmpresaADONET.Service
 
 
         /// <summary>
-        /// Check if can open the conection and shows a message if can connect or the error message otherwise.
+        /// Check if it can open the connection and shows a message if it can connect or the error message otherwise.
         /// </summary>
-        public static void CheckConecction()
+        public static void CheckConnection()
         {
             try
             {
-                using (var connection = new NpgsqlConnection(_path))
+                using (var connection = new NpgsqlConnection(Path))
                 {
                     connection.Open();
                     Console.WriteLine("Se pudo conectar perfectamente a la BBDD.");
@@ -45,9 +45,9 @@ namespace EmpresaADONET.Service
         /// <returns>bool, true if was deleted, false otherwise</returns>
         public bool Delete(int id)
         {
-            string query = "DELETE FROM clientes WHERE id = @clientId";
+            const string query = "DELETE FROM clientes WHERE id = @clientId";
             bool isDeleted = false;
-            using (var connection = new NpgsqlConnection(_path))
+            using (var connection = new NpgsqlConnection(Path))
             using (var command = new NpgsqlCommand(query, connection))
             {
                 connection.Open();
@@ -65,9 +65,9 @@ namespace EmpresaADONET.Service
         /// <returns>List of clients. Can be empty</returns>
         public IEnumerable<Client> GetAll()
         {
-            string query = "SELECT id, nombre, email, fecha_alta, activo, porcentaje_descuento, puntos_fidelidad FROM clientes";
+            const string query = "SELECT id, nombre, email, fecha_alta, activo, porcentaje_descuento, puntos_fidelidad FROM clientes";
             List<Client> listOfClients = new List<Client>();
-            using (var connection = new NpgsqlConnection(_path))
+            using (var connection = new NpgsqlConnection(Path))
             using (var command = new NpgsqlCommand(query, connection))
             {
                 connection.Open();
@@ -92,10 +92,10 @@ namespace EmpresaADONET.Service
         /// <returns>Client or null if the client doesn't exist</returns>
         public Client? GetById(int id)
         {
-            string query = "SELECT id, nombre, email, fecha_alta, activo, porcentaje_descuento, puntos_fidelidad FROM clientes " +
+            const string query = "SELECT id, nombre, email, fecha_alta, activo, porcentaje_descuento, puntos_fidelidad FROM clientes " +
                 "WHERE id = @clientId";
             Client? client = null;
-            using (var connection = new NpgsqlConnection(_path))
+            using (var connection = new NpgsqlConnection(Path))
             using (var command = new NpgsqlCommand(query, connection))
             {
                 connection.Open();
@@ -120,9 +120,9 @@ namespace EmpresaADONET.Service
         /// <returns>bool, True if it was inserted, false otherwise</returns>
         public bool Insert(Client clientToInsert)
         {
-            string query = "INSERT INTO clientes VALUES(@id, @nombre, @email, @registro, @activo, @descuento, @puntos)";
+            const string query = "INSERT INTO clientes VALUES(@id, @nombre, @email, @registro, @activo, @descuento, @puntos)";
             bool isInserted = false;
-            using (var connection = new NpgsqlConnection(_path))
+            using (var connection = new NpgsqlConnection(Path))
             using (var command = new NpgsqlCommand(query, connection))
             {
                 connection.Open();
@@ -132,7 +132,7 @@ namespace EmpresaADONET.Service
                 command.Parameters.AddWithValue("@registro", clientToInsert.RegistrationDate);
                 command.Parameters.AddWithValue("@activo", clientToInsert.IsActive);
                 command.Parameters.AddWithValue("@descuento", clientToInsert.Discount);
-                command.Parameters.AddWithValue("@puntos", clientToInsert.FidelizationPoints);
+                command.Parameters.AddWithValue("@puntos", clientToInsert.LoyaltyPoints);
                 int rowsAffected = command.ExecuteNonQuery();
                 isInserted = rowsAffected > 0;
             }
@@ -140,17 +140,17 @@ namespace EmpresaADONET.Service
         }
 
         /// <summary>
-        /// Upadte a client form the DB.
+        /// Update a client form the DB.
         /// </summary>
         /// <exception cref="Exception">Can thor exceptions</exception>
         /// <param name="client">Client to update</param>
-        /// <returns>bool, True if it was upadated, False otherwise.</returns>
+        /// <returns>bool, True if it was updated, False otherwise.</returns>
         public bool Update(Client client)
         {
-            string query = "UPDATE clientes SET id = @id, nombre = @nombre, email = @email, fecha_alta = @registro, " +
+            const string query = "UPDATE clientes SET id = @id, nombre = @nombre, email = @email, fecha_alta = @registro, " +
                 "activo = @activo, porcentaje_descuento = @descuento, puntos_fidelidad = @puntos WHERE id = @id";
             bool isUpdated = false;
-            using (var connection = new NpgsqlConnection(_path))
+            using (var connection = new NpgsqlConnection(Path))
             using (var command = new NpgsqlCommand(query, connection))
             {
                 connection.Open();
@@ -160,7 +160,7 @@ namespace EmpresaADONET.Service
                 command.Parameters.AddWithValue("@registro", client.RegistrationDate);
                 command.Parameters.AddWithValue("@activo", client.IsActive);
                 command.Parameters.AddWithValue("@descuento", client.Discount);
-                command.Parameters.AddWithValue("@puntos", client.FidelizationPoints);
+                command.Parameters.AddWithValue("@puntos", client.LoyaltyPoints);
                 int rowsAffected = command.ExecuteNonQuery();
                 isUpdated = rowsAffected > 0;
             }

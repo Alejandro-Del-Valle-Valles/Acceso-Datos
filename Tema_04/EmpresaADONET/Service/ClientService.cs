@@ -1,19 +1,49 @@
 ﻿using EmpresaADONET.Interfaces;
 using EmpresaADONET.Model;
 using Npgsql;
-using System.Xml.Linq;
 
 namespace EmpresaADONET.Service
 {
-    internal class ClientService : IClientService
+    internal class ClientService(ICrudDAO<Client, int> dbManager) : IClientService, IEquatable<ClientService>
     {
-        private static readonly ClientPostgreDAO dbManager = new();
+        public ICrudDAO<Client, int> DbManager = dbManager;
+
+        /// <summary>
+        /// Two Client Service Are Equal if they have the same DB Manager
+        /// </summary>
+        /// <param name="other">Client Service to compare</param>
+        /// <returns>bool, True if they're equal, false otherwise</returns>
+        public bool Equals(ClientService? other)
+        {
+            if (other is null) return false;
+            return ReferenceEquals(this, other) || DbManager.Equals(other.DbManager);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj.GetType() == GetType() && Equals((ClientService)obj);
+        }
+
+        public override int GetHashCode() => DbManager.GetHashCode();
+        
+
+        public static bool operator ==(ClientService? left, ClientService? right) => Equals(left, right);
+
+        public static bool operator !=(ClientService? left, ClientService? right) => !Equals(left, right);
+
+        /// <summary>
+        /// Delete a Client from the DB or inform if not exist or something went wrong.
+        /// </summary>
+        /// <param name="id">Int id of the client to delete</param>
+        /// <returns>bool, True if it was deleted, false otherwise</returns>
         public bool Delete(int id)
         {
             bool isDeleted = false;
             try
             {
-                isDeleted = dbManager.Delete(id);
+                isDeleted = DbManager.Delete(id);
             }
             catch (IOException ex)
             {
@@ -36,17 +66,17 @@ namespace EmpresaADONET.Service
 
         /// <summary>
         /// Return a IEnumerable with all clients of the DB.
-        /// Can return an empty list if something went worng or the DB doesn't contains clients yet.
+        /// Can return an empty list if something went wrong or the DB doesn't contain clients yet.
         /// </summary>
-        /// <param name="onlyCurrenCostumers">bool, True if only want the active clients, false otherwise.</param>
+        /// <param name="onlyCurrentCostumers">bool, True if only want the active clients, false otherwise.</param>
         /// <returns>IEnumerable of all clients.</returns>
-        public IEnumerable<Client> FindAll(bool onlyCurrenCostumers)
+        public IEnumerable<Client> FindAll(bool onlyCurrentCostumers)
         {
             IEnumerable<Client> clients = new List<Client>();
             try
             {
-                clients = dbManager.GetAll();
-                if(onlyCurrenCostumers) clients = clients.Where(client => client.IsActive == true);
+                clients = DbManager.GetAll();
+                if(onlyCurrentCostumers) clients = clients.Where(client => client.IsActive == true);
             }
             catch (IOException ex)
             {
@@ -78,7 +108,7 @@ namespace EmpresaADONET.Service
             Client? client = null;
             try
             {
-                client = dbManager.GetById(id);
+                client = DbManager.GetById(id);
             }
             catch (IOException ex)
             {
@@ -111,7 +141,7 @@ namespace EmpresaADONET.Service
             IEnumerable<Client> clients = new List<Client>();
             try
             {
-                clients = dbManager.GetAll().Where(client => client.Name == name);
+                clients = DbManager.GetAll().Where(client => client.Name == name);
             }
             catch (IOException ex)
             {
@@ -142,7 +172,11 @@ namespace EmpresaADONET.Service
             Dictionary<string, IEnumerable<Client>> clients= new();
             try
             {
-                clients = dbManager.GetAll().GroupBy(client => client.Email.Split("@")[1])
+                clients = DbManager.GetAll().GroupBy(client =>
+                    {
+                        string domain = client.Email.Split("@").ElementAtOrDefault(1) ?? "Sin correo";
+                        return domain;
+                    })
                     .ToDictionary(
                     group => group.Key,
                     group => group.AsEnumerable());
@@ -177,7 +211,7 @@ namespace EmpresaADONET.Service
             bool isRegistered = false;
             try
             {
-                isRegistered = dbManager.Insert(client);
+                isRegistered = DbManager.Insert(client);
             }
             catch(IOException ex)
             {
@@ -203,16 +237,16 @@ namespace EmpresaADONET.Service
         /// </summary>
         /// <param name="id">Int id of the client to unsuscribe.</param>
         /// <returns>bool, True if it was unsuscribed, false otherwise.</returns>
-        public bool Unsuscribe(int id)
+        public bool Unsubscribe(int id)
         {
-            bool isUnsuscribed = false;
+            bool isUnsubscribed = false;
             try
             {
-                Client? searchedClient = dbManager.GetById(id);
+                Client? searchedClient = DbManager.GetById(id);
                 if (searchedClient != null)
                 {
                     searchedClient.IsActive = false;
-                    isUnsuscribed = dbManager.Update(searchedClient);
+                    isUnsubscribed = DbManager.Update(searchedClient);
                 }
             }
             catch (IOException ex)
@@ -231,7 +265,7 @@ namespace EmpresaADONET.Service
             {
                 Console.WriteLine($"Ha ocurrido un error inesperado: {ex.Message}");
             }
-            return isUnsuscribed;
+            return isUnsubscribed;
         }
 
         /// <summary>
@@ -241,10 +275,10 @@ namespace EmpresaADONET.Service
         /// <returns>bool, True if it was updated, false otherwise</returns>
         public bool Update(Client client)
         {
-            bool isUpadted = false;
+            bool isUpdated = false;
             try
             {
-                isUpadted = dbManager.Update(client);
+                isUpdated = DbManager.Update(client);
             }
             catch (IOException ex)
             {
@@ -262,7 +296,7 @@ namespace EmpresaADONET.Service
             {
                 Console.WriteLine($"Ha ocurrido un error inesperado: {ex.Message}");
             }
-            return isUpadted;
+            return isUpdated;
         }
     }
 }

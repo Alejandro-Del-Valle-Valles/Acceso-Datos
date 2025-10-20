@@ -6,7 +6,7 @@ namespace EmpresaADONET
     {
         static void Main(string[] args)
         {
-            Exercise03App.Start();
+            EmpresaApp.Start();
         }
     }
 }
