@@ -11,7 +11,7 @@ namespace EmpresaADONET.Service
     {
         private static readonly string _path = "HOST=localhost;Port=54320;Database=empresa;Username=root;Password=1234;";
         /*El de clase
-         * "HOST=localhost;Port:5432;Database=empresa;Root=postgres;Password=1234;";
+         * "HOST=localhost;Port:5432;Database=empresa;Username=postgres;Password=1234;";
          */
 
 
