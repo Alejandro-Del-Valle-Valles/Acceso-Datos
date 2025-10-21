@@ -6,7 +6,7 @@ namespace EmpresaADONET.Exercise
 {
     internal class EmpresaApp
     {
-        private static readonly ClientService cs = new(new ClientPostgreDAO());
+        private static readonly ClientService Cs = new(new ClientPostgreDAO());
 
         public static void Start()
         {
@@ -36,6 +36,10 @@ namespace EmpresaADONET.Exercise
             Console.WriteLine();
 
             ShowClientsOrderedByDiscount();
+            Console.WriteLine();
+
+            ActiveAllClients();
+            Console.WriteLine();
         }
 
         /// <summary>
@@ -44,7 +48,7 @@ namespace EmpresaADONET.Exercise
         private static void ShowAllClients()
         {
             Console.WriteLine("CLIENTES DE LA BBDD:");
-            cs.FindAll(false)?.ToList().ForEach(Console.WriteLine);
+            Cs.FindAll(false)?.ToList().ForEach(Console.WriteLine);
         }
 
         /// <summary>
@@ -53,7 +57,7 @@ namespace EmpresaADONET.Exercise
         private static void ShowActiveClients()
         {
             Console.WriteLine("CLIENTES ACTIVOS:");
-            cs.FindAll(true)?.ToList().ForEach(Console.WriteLine);
+            Cs.FindAll(true)?.ToList().ForEach(Console.WriteLine);
         }
 
         /// <summary>
@@ -64,7 +68,7 @@ namespace EmpresaADONET.Exercise
         private static void ShowClientById(int id)
         {
             Console.WriteLine($"Cliente con el ID: {id}");
-            Console.WriteLine(cs.FindById(id));
+            Console.WriteLine(Cs.FindById(id));
         }
 
         /// <summary>
@@ -78,11 +82,11 @@ namespace EmpresaADONET.Exercise
             try
             {
                 Console.WriteLine($"Sumamos un 1% al cliente con ID{id}");
-                Client? client = cs.FindById(id);
+                Client? client = Cs.FindById(id);
                 if (client != null)
                 {
                     client.Discount++;
-                    bool isSaved = cs.Update(client);
+                    bool isSaved = Cs.Update(client);
                     if (isSaved) Console.WriteLine("Cliente actualizado con éxito.");
                     else Console.WriteLine("No se pudo actualizar el cliente.");
                 }
@@ -105,11 +109,11 @@ namespace EmpresaADONET.Exercise
         private static void UnsubscribeClient(int id)
         {
             Console.WriteLine($"Se desuscribe al cliente con Id {id}:");
-            Client? client = cs.FindById(id);
+            Client? client = Cs.FindById(id);
             if (client != null && client.IsActive != false)
             {
                 client.IsActive = false;
-                cs.Update(client);
+                Cs.Update(client);
             }
             else Console.WriteLine($"El cliente no existe o ya está desuscrito.");
         }
@@ -121,7 +125,7 @@ namespace EmpresaADONET.Exercise
         private static void DeleteClient(int id)
         {
             Console.WriteLine($"Eliminando al cliente con Id: {id}");
-            bool isDeleted = cs.Delete(id);
+            bool isDeleted = Cs.Delete(id);
             if (isDeleted) Console.WriteLine("Cliente eliminado con éxito");
             else Console.WriteLine("No se pudo eliminar al cliente.");
         }
@@ -134,7 +138,7 @@ namespace EmpresaADONET.Exercise
         private static void ShowAllActiveClientsWithSpecificName(string name, bool caseSensitive = true)
         {
             Console.WriteLine($"Buscando a todos los usuarios activos con nombre {name}:");
-            cs.FindByName(name)?
+            Cs.FindByName(name)?
                 .Where(client => client.IsActive == true).ToList()
                 .ForEach(Console.WriteLine);
         }
@@ -145,7 +149,7 @@ namespace EmpresaADONET.Exercise
         private static void ShowNamesOfClientsForEachDomain()
         {
             Console.WriteLine("Mostrando a todos los clientes por dominio.");
-            foreach (var pair in cs.GetGroupByEmail())
+            foreach (var pair in Cs.GetGroupByEmail())
             {
                 Console.WriteLine($"{pair.Key}:\n[");
                 pair.Value.ToList().ForEach(Console.WriteLine);
@@ -159,9 +163,25 @@ namespace EmpresaADONET.Exercise
         private static void ShowClientsOrderedByDiscount()
         {
             Console.WriteLine("Mostrando a todos los clientes por % de descuento:");
-            cs.FindAll(false)?
+            Cs.FindAll(false)?
                 .OrderByDescending(c => c.Discount).ToList()
                 .ForEach(Console.WriteLine);
+        }
+
+        /// <summary>
+        /// Change to active all clients of the DB.
+        /// </summary>
+        private static void ActiveAllClients()
+        {
+            Console.WriteLine("Cambiando a todos los clientes a activo:");
+            Cs.FindAll(false)?
+                .Where(c => !c.IsActive).ToList()
+                .ForEach(c =>
+                {
+                    c.IsActive = true;
+                    Cs.Update(c);
+                    // That's no effective, it would be better to Open the connection once, update all, and close
+                });
         }
     }
 }
