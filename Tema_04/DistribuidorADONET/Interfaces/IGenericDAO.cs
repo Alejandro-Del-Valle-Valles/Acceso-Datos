@@ -9,7 +9,7 @@
         bool Insert(T obj);
         bool Update(T obj);
         bool Delete(int code);
-        T GetByCode(int code);
+        T? GetByCode(int code);
         IEnumerable<T> GetAll();
     }
 }

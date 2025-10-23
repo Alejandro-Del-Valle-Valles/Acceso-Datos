@@ -75,8 +75,13 @@ namespace EmpresaADONET.Service
                 {
                     while (reader.Read())
                     {
-                        listOfClients.Add(new(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetDateTime(3),
-                            reader.GetBoolean(4), reader.GetFloat(5), reader.GetInt32(6)));
+                        listOfClients.Add(new(reader.GetInt32(0), 
+                            reader.GetString(1), 
+                            !reader.IsDBNull(2) ? reader.GetString(2) : "Sin correo",
+                            reader.GetDateTime(3),
+                            reader.GetBoolean(4), 
+                            reader.GetFloat(5), 
+                            reader.GetInt32(6)));
                         //Create the client and add it into the list
                     }
                 }
@@ -145,10 +150,10 @@ namespace EmpresaADONET.Service
         /// <exception cref="Exception">Can thor exceptions</exception>
         /// <param name="client">Client to update</param>
         /// <returns>bool, True if it was updated, False otherwise.</returns>
-        public bool Update(Client client)
+        public bool Update(Client client) 
         {
-            const string query = "UPDATE clientes SET id = @id, nombre = @nombre, email = @email, fecha_alta = @registro, " +
-                "activo = @activo, porcentaje_descuento = @descuento, puntos_fidelidad = @puntos WHERE id = @id";
+            const string query = @"UPDATE clientes SET id = @id, nombre = @nombre, email = @email, fecha_alta = @registro,
+                activo = @activo, porcentaje_descuento = @descuento, puntos_fidelidad = @puntos WHERE id = @id";
             bool isUpdated = false;
             using (var connection = new NpgsqlConnection(Path))
             using (var command = new NpgsqlCommand(query, connection))

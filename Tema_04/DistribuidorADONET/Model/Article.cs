@@ -11,11 +11,12 @@ namespace DistribuidorADONET.Model
         private int _code;
         private string _name;
         private float _price;
+        private int _manufacturerCode;
 
         public int Code
         {
             get => _code;
-            private set
+            private init
             {
                 if (value > 0) _code = value;
                 else throw new InvalidValueException("El código del artículo no puede ser inferior a 1");
@@ -41,7 +42,16 @@ namespace DistribuidorADONET.Model
                 else throw new InvalidValueException($"El precio debe estar entre 0 y {PriceMaxValue} euros.");
             }
         }
-        public Manufacturer Manufacturer { get; set; }
+
+        public int ManufacturerCode
+        {
+            get => _manufacturerCode;
+            set
+            {
+                if (value > 0) _manufacturerCode = value;
+                else throw new InvalidValueException("El código del fabricante no puede ser inferior a 1.");
+            }
+        }
 
         /// <summary>
         /// Constructor to instance Article.
@@ -51,22 +61,22 @@ namespace DistribuidorADONET.Model
         /// <param name="code">int</param>
         /// <param name="name">string</param>
         /// <param name="price">float</param>
-        /// <param name="manufacturer">Manufacturer</param>
-        public Article(int code, string name, float price, Manufacturer manufacturer)
+        /// <param name="manufacturerCode">int Manufacturer code</param>
+        public Article(int code, string name, float price, int manufacturerCode)
         {
             Code = code;
             Name = name;
             Price = price;
-            Manufacturer = manufacturer;
+            ManufacturerCode = manufacturerCode;
         }
 
         public override string ToString()
         {
-            return $"Article => Code: {Code}, Name: {Name}, Price: {Price}\n\t{Manufacturer}";
+            return $"Article => Code: {Code}, Name: {Name}, Price: {Price}, Manufacturer Code: {ManufacturerCode}.";
         }
 
         /// <summary>
-        /// Compare two Articles. First by code, then by name, then by price and then by Manufacturer.
+        /// Compare two Articles. First by code, then by name, then by price and then by the Manufacturer Code.
         /// If the other article is null, return 0.
         /// </summary>
         /// <param name="other">Article to compare with.</param>
@@ -76,7 +86,7 @@ namespace DistribuidorADONET.Model
             int? compare = Code.CompareTo(other?.Code);
             if (compare == 0) compare = String.CompareOrdinal(Name, other?.Name);
             if (compare == 0) compare = Price.CompareTo(other?.Price);
-            if (compare == 0) compare = Manufacturer.CompareTo(other?.Manufacturer);
+            if (compare == 0) compare = ManufacturerCode.CompareTo(other?.ManufacturerCode);
             return compare ?? 0;
         }
 

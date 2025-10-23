@@ -27,7 +27,6 @@ namespace EmpresaADONET.Service
         }
 
         public override int GetHashCode() => DbManager.GetHashCode();
-        
 
         public static bool operator ==(ClientService? left, ClientService? right) => Equals(left, right);
 

@@ -17,14 +17,15 @@ namespace EmpresaADONET.Model
                 else throw new StringToLongException($"El nombre no puede tener más de {Data.MAX_LENGTH_CLIENT_NAME} caracteres.");
             }
         }
-        private string _email = "Unknown";
+
+        private string _email;
         public string Email
         {
             get => _email;
             set
             {
-                if (value.Trim().Length <= Data.MAX_LENGTH_CLIENT_EMAIL) _email = value;
-                else throw new StringToLongException($"El email no puede tener más de {Data.MAX_LENGTH_CLIENT_EMAIL} caracteres.");
+                if (value?.Trim().Length <= Data.MAX_LENGTH_CLIENT_EMAIL) _email = value;
+                else throw new StringToLongException($"El email no puede tener más de {Data.MAX_LENGTH_CLIENT_EMAIL} caracteres ni puede estar vacío.");
             }
         }
         private DateTime _registrationDate = new();
