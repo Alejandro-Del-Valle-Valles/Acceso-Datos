@@ -2,7 +2,7 @@
 using DistribuidorADONET.Model;
 using Npgsql;
 
-namespace DistribuidorADONET.Service
+namespace DistribuidorADONET.DAO
 {
     internal class ManufacturerPostgreDao : IGenericDAO<Manufacturer>
     {
@@ -99,9 +99,23 @@ namespace DistribuidorADONET.Service
         /// <returns>IEnumerable with all Manufacturers or empty if the DB haven't Manufacturers</returns>
         public IEnumerable<Manufacturer> GetAll()
         {
-            IEnumerable<Manufacturer> manufacturers = new List<Manufacturer>();
+            IList<Manufacturer> manufacturers = new List<Manufacturer>();
             string query = "SELECT codigo, nombre FROM fabricantes;";
-            //TODO: Implementar la obtención de todo
+            using var connection = new NpgsqlConnection(Path);
+            using (var command = new NpgsqlCommand(query, connection))
+            {
+                connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        manufacturers.Add(new(
+                            reader.GetInt32(0),
+                            reader.GetString(1)
+                            ));
+                    }
+                }
+            }
             return manufacturers;
         }
     }

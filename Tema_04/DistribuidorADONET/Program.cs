@@ -1,4 +1,4 @@
-﻿using DistribuidorADONET.Service;
+﻿using DistribuidorADONET.Exercises;
 
 namespace DistribuidorADONET
 {
@@ -6,7 +6,7 @@ namespace DistribuidorADONET
     {
         static void Main(string[] args)
         {
-
+            DistribuidorApp.Start();
         }
     }
 }
