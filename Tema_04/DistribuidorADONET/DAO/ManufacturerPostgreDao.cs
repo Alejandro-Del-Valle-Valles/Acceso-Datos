@@ -1,4 +1,5 @@
-﻿using DistribuidorADONET.Interfaces;
+﻿using System.Transactions;
+using DistribuidorADONET.Interfaces;
 using DistribuidorADONET.Model;
 using Npgsql;
 
@@ -21,9 +22,23 @@ namespace DistribuidorADONET.DAO
             using (var command = new NpgsqlCommand(query, connection))
             {
                 connection.Open();
-                command.Parameters.AddWithValue("@code", obj.Code);
-                command.Parameters.AddWithValue("@name", obj.Name);
-                isInserted = command.ExecuteNonQuery() > 0;
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        command.Transaction = transaction;
+                        command.Parameters.AddWithValue("@code", obj.Code);
+                        command.Parameters.AddWithValue("@name", obj.Name);
+                        isInserted = command.ExecuteNonQuery() > 0;
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        isInserted = false;
+                        transaction.Rollback();
+                        throw new TransactionAbortedException("Se abortó la inserción del fabricante.");
+                    }
+                }
             }
             return isInserted;
         }
@@ -42,9 +57,22 @@ namespace DistribuidorADONET.DAO
             using (var command = new NpgsqlCommand(query, connection))
             {
                 connection.Open();
-                command.Parameters.AddWithValue("@code", obj.Code);
-                command.Parameters.AddWithValue("@name", obj.Name);
-                isUpdated = command.ExecuteNonQuery() > 0;
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        command.Transaction = transaction;
+                        command.Parameters.AddWithValue("@code", obj.Code);
+                        command.Parameters.AddWithValue("@name", obj.Name);
+                        isUpdated = command.ExecuteNonQuery() > 0;
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw new TransactionAbortedException("Se abortó la actualización del artículo");
+                    }
+                }
             }
             return isUpdated;
         }

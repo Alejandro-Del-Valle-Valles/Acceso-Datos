@@ -1,4 +1,6 @@
-﻿namespace DistribuidorADONET.Interfaces
+﻿using DistribuidorADONET.Model;
+
+namespace DistribuidorADONET.Interfaces
 {
     /// <summary>
     /// Interface to implement into DB Managers

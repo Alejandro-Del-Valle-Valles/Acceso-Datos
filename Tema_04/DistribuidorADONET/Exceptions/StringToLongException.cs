@@ -1,6 +1,9 @@
 ﻿namespace DistribuidorADONET.Exceptions
 {
-    internal class StringToLongException : Exception
+    /// <summary>
+    /// This exception inherits from InvalidException
+    /// </summary>
+    internal class StringToLongException : InvalidValueException
     {
         private const string DefaultMessage = "Length of the string is too long.";
         public StringToLongException() : base(DefaultMessage) { }

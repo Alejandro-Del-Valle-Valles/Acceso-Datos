@@ -6,7 +6,15 @@ namespace DistribuidorADONET
     {
         static void Main(string[] args)
         {
-            DistribuidorApp.Start();
+            try
+            {
+                DistribuidorApp.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ocurrió un error inesperado: {ex.Message}");
+            }
+
         }
     }
 }

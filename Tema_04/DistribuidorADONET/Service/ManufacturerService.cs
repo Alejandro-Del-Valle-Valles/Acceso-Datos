@@ -1,6 +1,8 @@
-﻿using DistribuidorADONET.Model;
+﻿using DistribuidorADONET.Exceptions;
 using DistribuidorADONET.Interfaces;
+using DistribuidorADONET.Model;
 using Npgsql;
+using System.Transactions;
 
 namespace DistribuidorADONET.Service
 {
@@ -25,6 +27,10 @@ namespace DistribuidorADONET.Service
             catch (InvalidOperationException ex)
             {
                 Console.WriteLine($"La operación que se está tratando de realizar no es posible: {ex.Message}");
+            }
+            catch (TransactionAbortedException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             catch (NpgsqlException ex)
             {
@@ -57,6 +63,10 @@ namespace DistribuidorADONET.Service
             catch (InvalidOperationException ex)
             {
                 Console.WriteLine($"La operación que se está tratando de realizar no es posible: {ex.Message}");
+            }
+            catch (TransactionAbortedException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             catch (NpgsqlException ex)
             {
@@ -114,6 +124,10 @@ namespace DistribuidorADONET.Service
             {
                 manufacturer = dbManager.GetByCode(code);
             }
+            catch (InvalidValueException ex)
+            {
+                Console.WriteLine($"Uno de los atributos del fabricante es erróneo y no se pudo extraer: {ex.Message}");
+            }
             catch (IOException ex)
             {
                 Console.WriteLine($"No se pudo acceder a la BBDD: {ex.Message}");
@@ -144,6 +158,10 @@ namespace DistribuidorADONET.Service
             try
             {
                 articles = dbManager.GetAll();
+            }
+            catch (InvalidValueException ex)
+            {
+                Console.WriteLine($"Uno de los atributos del fabricante es erróneo y no se pudo extraer: {ex.Message}");
             }
             catch (IOException ex)
             {

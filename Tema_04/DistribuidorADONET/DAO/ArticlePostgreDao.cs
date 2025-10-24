@@ -1,4 +1,6 @@
-﻿using DistribuidorADONET.Model;
+﻿using System.Transactions;
+using DistribuidorADONET.Exceptions;
+using DistribuidorADONET.Model;
 using DistribuidorADONET.Interfaces;
 using Npgsql;
 
@@ -21,12 +23,27 @@ namespace DistribuidorADONET.DAO
             using var connection = new NpgsqlConnection(Path);
             using (var command = new NpgsqlCommand(query, connection))
             {
+
                 connection.Open();
-                command.Parameters.AddWithValue("@codigo", obj.Code);
-                command.Parameters.AddWithValue("@nombre", obj.Name);
-                command.Parameters.AddWithValue("@precio", obj.Price);
-                command.Parameters.AddWithValue("@idFabricante", obj.ManufacturerCode);
-                isInserted = command.ExecuteNonQuery() > 0;
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        command.Transaction = transaction;
+                        command.Parameters.AddWithValue("@codigo", obj.Code);
+                        command.Parameters.AddWithValue("@nombre", obj.Name);
+                        command.Parameters.AddWithValue("@precio", obj.Price);
+                        command.Parameters.AddWithValue("@idFabricante", obj.ManufacturerCode);
+                        isInserted = command.ExecuteNonQuery() > 0;
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw new TransactionAbortedException("Se abortó la inserción del artículo.");
+                    }
+
+                }
             }
             return isInserted;
         }
@@ -44,11 +61,24 @@ namespace DistribuidorADONET.DAO
             using (var command = new NpgsqlCommand(query, connection))
             {
                 connection.Open();
-                command.Parameters.AddWithValue("@codigo", obj.Code);
-                command.Parameters.AddWithValue("@nombre", obj.Name);
-                command.Parameters.AddWithValue("@precio", obj.Price);
-                command.Parameters.AddWithValue("@idFabricante", obj.ManufacturerCode);
-                isUpdated = command.ExecuteNonQuery() > 0;
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        command.Transaction = transaction;
+                        command.Parameters.AddWithValue("@codigo", obj.Code);
+                        command.Parameters.AddWithValue("@nombre", obj.Name);
+                        command.Parameters.AddWithValue("@precio", obj.Price);
+                        command.Parameters.AddWithValue("@idFabricante", obj.ManufacturerCode);
+                        isUpdated = command.ExecuteNonQuery() > 0;
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        throw new TransactionAbortedException("Se abortó la actualización del artículo.");
+                    }
+                }
             }
             return isUpdated;
         }
@@ -89,7 +119,7 @@ namespace DistribuidorADONET.DAO
                             reader.GetString(1),
                             reader.GetFloat(2),
                             reader.GetInt32(3)
-                            );
+                        );
                     }
                 }
             }
