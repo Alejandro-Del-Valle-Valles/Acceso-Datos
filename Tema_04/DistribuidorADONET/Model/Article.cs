@@ -38,7 +38,7 @@ namespace DistribuidorADONET.Model
             get => _price;
             set
             {
-                if (value >= 0 && PriceMaxValue <= value) _price = value;
+                if (value >= 0 && value <= PriceMaxValue) _price = value;
                 else throw new InvalidValueException($"El precio debe estar entre 0 y {PriceMaxValue} euros.");
             }
         }

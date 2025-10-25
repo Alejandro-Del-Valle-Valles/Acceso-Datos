@@ -1,5 +1,4 @@
 ﻿using System.Transactions;
-using DistribuidorADONET.Exceptions;
 using DistribuidorADONET.Model;
 using DistribuidorADONET.Interfaces;
 using Npgsql;
@@ -109,6 +108,7 @@ namespace DistribuidorADONET.DAO
             using var connection = new NpgsqlConnection(Path);
             using (var command = new NpgsqlCommand(query, connection))
             {
+                connection.Open();
                 command.Parameters.AddWithValue("@codigo", code);
                 using (var reader = command.ExecuteReader())
                 {
@@ -138,6 +138,7 @@ namespace DistribuidorADONET.DAO
             using var connection = new NpgsqlConnection(Path);
             using (var command = new NpgsqlCommand(query, connection))
             {
+                connection.Open();
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())

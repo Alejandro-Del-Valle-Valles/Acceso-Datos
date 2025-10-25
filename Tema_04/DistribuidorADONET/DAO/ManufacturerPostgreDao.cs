@@ -85,7 +85,7 @@ namespace DistribuidorADONET.DAO
         public bool Delete(int code)
         {
             bool isDeleted = false;
-            string query = @"DELETE FROM fabricantes WHERE code = @code;";
+            string query = @"DELETE FROM fabricantes WHERE codigo = @code;";
             using var connection = new NpgsqlConnection(Path);
             using (var command = new NpgsqlCommand(query, connection))
             {

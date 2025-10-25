@@ -6,6 +6,7 @@ using System.Transactions;
 
 namespace DistribuidorADONET.Service
 {
+    //TODO: Implementar la nueva interfaz
     internal class ManufacturerService(IGenericDAO<Manufacturer> dbManager) : IGenericService<Manufacturer>
     {
         /// <summary>
