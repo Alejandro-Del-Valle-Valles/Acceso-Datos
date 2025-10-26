@@ -7,7 +7,7 @@ using System.Transactions;
 namespace DistribuidorADONET.Service
 {
     //TODO: Implementar la nueva interfaz
-    internal class ManufacturerService(IGenericDAO<Manufacturer> dbManager) : IGenericService<Manufacturer>
+    internal class ManufacturerService(IManufacturerDAO dbManager) : IManufacturerService
     {
         /// <summary>
         /// Insert into the DB the new Manufacturer.
@@ -182,6 +182,37 @@ namespace DistribuidorADONET.Service
             }
 
             return articles;
+        }
+
+        public ManufacturerDTO? GetManufacturerAndArtcilesInfo(int code)
+        {
+            ManufacturerDTO? manufacturerDTO= null;
+            try
+            {
+                manufacturerDTO = dbManager.GetManufacturerAndArticlesByCode(code);
+            }
+            catch (InvalidValueException ex)
+            {
+                Console.WriteLine($"El nombre del fabricante o alguno de los atributos de un artículo es erróneo y no se pudo extraer: {ex.Message}");
+            }
+            catch (IOException ex)
+            {
+                Console.WriteLine($"No se pudo acceder a la BBDD: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Console.WriteLine($"La operación que se está tratando de realizar no es posible: {ex.Message}");
+            }
+            catch (NpgsqlException ex)
+            {
+                Console.WriteLine($"Ha ocurrido un error al tratar de manejar la BBDD: {ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ha ocurrido un error inesperado: {ex.Message}");
+            }
+
+            return manufacturerDTO;
         }
     }
 }

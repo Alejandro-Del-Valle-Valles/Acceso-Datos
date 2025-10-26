@@ -5,7 +5,7 @@ using Npgsql;
 
 namespace DistribuidorADONET.DAO
 {
-    internal class ManufacturerPostgreDao : IGenericDAO<Manufacturer>
+    internal class ManufacturerPostgreDao : IManufacturerDAO
     {
         private const string Path = "HOST=localhost;Port=54320;Database=empresa;Username=root;Password=1234;";
 
@@ -145,6 +145,41 @@ namespace DistribuidorADONET.DAO
                 }
             }
             return manufacturers;
+        }
+
+        /// <summary>
+        /// Obtain the name of the manufacturer and a list of their articles.
+        /// </summary>
+        /// <param name="code">int code of the searched manufacturer.</param>
+        /// <returns>ManufacturerDTO or null if the manufacturer doesn't exist.</returns>
+        public ManufacturerDTO? GetManufacturerAndArticlesByCode(int code)
+        {
+            ManufacturerDTO? manufacturer = null;
+            string query = @"
+SELECT f.nombre, a.nombre, a.precio
+FROM fabricantes f
+INNER JOIN 
+articulos a ON f.codigo = a.fabricante
+WHERE f.codigo = @code";
+            using var connection = new NpgsqlConnection(Path);
+            using (var command = new NpgsqlCommand(query, connection))
+            {
+                connection.Open();
+                command.Parameters.AddWithValue("@code", code);
+                IList<ArticleDTO> articles = new List<ArticleDTO>();
+                string manufacturerName = String.Empty;
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        manufacturerName = reader.GetString(0);
+                        articles.Add(new(reader.GetString(1), reader.GetFloat(2)));
+                    }
+
+                    manufacturer = new(manufacturerName, articles);
+                }
+            }
+            return manufacturer;
         }
     }
 }

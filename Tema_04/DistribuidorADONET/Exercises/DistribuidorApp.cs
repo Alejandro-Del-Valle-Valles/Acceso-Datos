@@ -9,7 +9,7 @@ namespace DistribuidorADONET.Exercises
     {
         private static readonly IGenericService<Article>
             ArticlesDbManager = new ArticleService(new ArticlePostgreDao());
-        private static readonly IGenericService<Manufacturer> ManufacturersDbManager =
+        private static readonly IManufacturerService ManufacturersDbManager =
             new ManufacturerService(new ManufacturerPostgreDao());
 
         public static void Start()

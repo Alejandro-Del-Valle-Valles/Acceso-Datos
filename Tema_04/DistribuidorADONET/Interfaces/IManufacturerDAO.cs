@@ -2,8 +2,8 @@
 
 namespace DistribuidorADONET.Interfaces
 {
-    internal interface IManufacturerDAO : IGenericDAO<ManufacturersDTO>
+    internal interface IManufacturerDAO : IGenericDAO<Manufacturer>
     {
-        public ManufacturersDTO GetManufacturerAndArticlesByCode();
+        public ManufacturerDTO? GetManufacturerAndArticlesByCode(int code);
     }
 }

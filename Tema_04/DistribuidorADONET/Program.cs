@@ -8,7 +8,7 @@ namespace DistribuidorADONET
         {
             try
             {
-                DistribuidorApp.Start();
+                Exercise10App.Start();
             }
             catch (Exception ex)
             {
