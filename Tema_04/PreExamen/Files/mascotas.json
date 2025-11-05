@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "nombre": "Yako",
+    "persona": 1
+  },
+  {
+    "id": 2,
+    "nombre": "Doraemon",
+    "persona": null
+  },
+  {
+    "id": 3,
+    "nombre": "Filli",
+    "persona": 2
+  },
+  {
+    "id": 4,
+    "nombre": "Bigotes",
+    "persona": null
+  },
+  {
+    "id": 5,
+    "nombre": "Firu",
+    "persona": 1
+  }
+]

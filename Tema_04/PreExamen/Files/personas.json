@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nombre": "Alejandro",
+    "email": "alejandro@gmail.com",
+    "fechaNacimiento": "13/05/2006"
+  },
+  {
+    "id": 2,
+    "nombre": "Miguel",
+    "email": "miguel@gmail.com",
+    "fechaNacimiento": "01/04/2004"
+  },
+  {
+    "id": 3,
+    "nombre": "Sara",
+    "email": "sara@gmail.com",
+    "fechaNacimiento": "21/11/2012"
+  },
+  {
+    "id": 4,
+    "nombre": "Luc\u00EDa",
+    "email": "lucia@gmail.com",
+    "fechaNacimiento": "03/02/2008"
+  }
+]
